@@ -994,8 +994,8 @@ class S3Source(StatefulIngestionSourceBase):
                         folders = []
                         for dir in dirs_to_process:
                             logger.info(f"Getting files from folder: {dir}")
-                            prefix_to_process = dir.rstrip("\\").lstrip(
-                                self.create_s3_path(bucket_name, "/")
+                            prefix_to_process = dir.rstrip("\\").replace(
+                                self.create_s3_path(bucket_name, ""), ""
                             )
 
                             folders.extend(
